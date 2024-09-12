@@ -30,8 +30,5 @@ trigger:
         params:
           person: lucca
           messages:
-            - text: Fantastic work! You've dived into the world of automation with UiPath and
-                mastered the essentials of data management. With your newfound
-                skills, you're ready to tackle even bigger projects and impress
-                Ness with your automation prowess. Go automate the world!
+            - text: Now lets fill in some data and test it!
       - actionId: finish_step

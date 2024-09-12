@@ -1,0 +1,34 @@
+id: uipath_log_data
+learningObjectives:
+  - Log data in test flow
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: We want to see some feedback from our flow, we'll use a new action called `Log Message`
+          - text: We'll :instruction[Click on the Plus sign] and search for `Log Message`
+          - text: In the message input field choose your new variable `theincrediblevar` and log level as `info`
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages: 
+          - text: Now its time to test your work :instruction[Click test from top left corner] and see it in action. 
+          - text: If all goes well it will show you the automation progress and the robot name on the right log panel.
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: Fantastic work! You've dived into the world of automation with UiPath and
+                mastered the essentials of data management. With your newfound
+                skills, you're ready to tackle even bigger projects and impress
+                Ness with your automation prowess. Go automate the world!
+      - actionId: finish_step

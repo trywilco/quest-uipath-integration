@@ -10,12 +10,7 @@ startFlow:
           - text: Now that we've created our incredible variable, let's fill some data into it by creating a new step after our trigger
           - text: Click on the plus sign and search for `Set variable` and click on it
           - text: Now that you have an action inplace, choose the variable that we've created from the dropdown.
-          - text: We'll choose data from the manual trigger called `Job Data`, expand the object and choose Robot name
-    - actionId: bot_message
-      params:
-        person: lucca
-        messages: 
-          - text: Now its time to test your work :instruction[Click test from top left corner] and see it in action.
+          - text: We'll choose data from the manual trigger called `Job Data`, expand the object and choose `Robot name` as value
     - actionId: ready_message
       params:
         person: lucca
@@ -27,8 +22,5 @@ trigger:
         params:
           person: lucca
           messages:
-            - text: Fantastic work! You've dived into the world of automation with UiPath and
-                mastered the essentials of data management. With your newfound
-                skills, you're ready to tackle even bigger projects and impress
-                Ness with your automation prowess. Go automate the world!
+            - text: Lets move on to see it in action.
       - actionId: finish_step
