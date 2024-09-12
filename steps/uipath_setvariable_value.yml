@@ -8,7 +8,7 @@ startFlow:
         person: lucca
         messages:
           - text: Now that we've created our incredible variable, let's fill some data into it by creating a new step after our trigger
-          - text: Click on the plus sign and search for `Set variable` and click on it
+          - text: ":instruction[Click on the plus sign and search for `Set variable value` and click on it] and choose `theincrediblevalue`
           - text: Now that you have an action inplace, choose the variable that we've created from the dropdown.
           - text: We'll choose data from the manual trigger called `Job Data`, expand the object and choose `Robot name` as value
     - actionId: ready_message
