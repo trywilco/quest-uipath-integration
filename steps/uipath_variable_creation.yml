@@ -1,0 +1,35 @@
+id: uipath_variable_creation
+learningObjectives:
+  - Create and utilize a variable using Data Manager.
+hints:
+  - Check [Variable
+    Creation](https://docs.uipath.com/studio/docs/managing-variables) in the
+    UiPath docs for additional insights.
+  - Always assign meaningful names to variables so Ness knows you’re organized!
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Now, let's take our creations further by setting up some variables.
+          - text: If data cells were bees, variables would be the jars in which we store the
+              honey.
+          - text: In the Data Manager, create a variable. Choose a type that suits your
+              automation needs—it’s the foundation of flexible automation logic.
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: Fantastic work! You've dived into the world of automation with UiPath and
+                mastered the essentials of data management. With your newfound
+                skills, you're ready to tackle even bigger projects and impress
+                Ness with your automation prowess. Go automate the world!
+      - actionId: finish_step

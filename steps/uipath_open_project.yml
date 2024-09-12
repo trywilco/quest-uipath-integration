@@ -1,0 +1,26 @@
+id: uipath_open_project
+learningObjectives:
+  - Open UiPath Studio and start a new project.
+hints:
+  - Refer to [UiPath’s documentation](https://docs.uipath.com/studio) for
+    guidance on starting a new project.
+  - Utilize the 'New Project' button within UiPath Studio to begin.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Great, we’re legit now! Let's open UiPath Studio and start a new project.
+          - text: Opening a project is like opening a new adventure—one where robots do our
+              chores!
+          - text: Go ahead and launch UiPath Studio, and start a new project. You’ll feel as
+              if you’re Donald Duck diving into a pool of automation goodness.
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: finish_step
