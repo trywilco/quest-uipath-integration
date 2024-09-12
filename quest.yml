@@ -16,6 +16,7 @@ steps:
   - uipath_open_project
   - uipath_data_manager
   - uipath_variable_creation
+  - uipath_setvariable_value
 level: intermediate
 type: PROMPT
 duration: 2

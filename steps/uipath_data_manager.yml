@@ -18,6 +18,7 @@ startFlow:
           - text: Use the Data Manager in UiPath Studio to start organizing project data.
               Create variables that you can use throughout your project. This is
               your chance to be a data DJ—track on, track off.
+          - text: ":instruction[Click on the right sidebar and click on Data Manager]"
     - actionId: ready_message
       params:
         person: lucca

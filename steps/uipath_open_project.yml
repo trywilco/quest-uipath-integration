@@ -16,6 +16,7 @@ startFlow:
               chores!
           - text: Go ahead and launch UiPath Studio, and start a new project. You’ll feel as
               if you’re Donald Duck diving into a pool of automation goodness.
+          - text: Lets [Create a new Project](https://cloud.uipath.com/wilcofhwymbx/studio_/designer/new) and choose manual trigger
     - actionId: ready_message
       params:
         person: lucca
