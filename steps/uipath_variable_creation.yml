@@ -15,8 +15,6 @@ startFlow:
           - text: Now, let's take our creations further by setting up some variables.
           - text: If data cells were bees, variables would be the jars in which we store the
               honey.
-          - text: In the Data Manager, create a variable. Choose a type that suits your
-              automation needs—it’s the foundation of flexible automation logic.
           - text: "We'll create a new variable by :instruction[clicking the New+ button] and choosing variable and type text."
           - text: Name your new variable `theincrediblevariable`
     - actionId: ready_message

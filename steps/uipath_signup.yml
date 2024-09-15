@@ -3,7 +3,7 @@ learningObjectives:
   - Create a UiPath account.
 hints:
   - Visit [UiPath's sign-up page](https://www.uipath.com) to get started.
-  - Ensure to verify your email address after signing up.
+  - Make sure to verify your email address after signing up.
 startFlow:
   do:
     - actionId: bot_message

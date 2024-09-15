@@ -13,7 +13,7 @@ startFlow:
         person: lucca
         messages:
           - text: Here's where the magic happens. Time to crack open the Data Manager.
-          - text: Managing data is crucial—just imagine a library without a catalog. Same chaos, different setting.
+          - text: Managing data is crucial — just imagine a library without a catalog. Same chaos, different setting.
           - text: Use the Data Manager in UiPath Studio to start organizing project data.
               Create variables that you can use throughout your project. This is
               your chance to be a data DJ—track on, track off.
