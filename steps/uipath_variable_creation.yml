@@ -2,6 +2,7 @@ id: uipath_variable_creation
 learningObjectives:
   - Create and utilize a variable using Data Manager.
 hints:
+  - The Data Manager is typically on the right panel within UiPath Studio.
   - Check [Variable
     Creation](https://docs.uipath.com/studio/docs/managing-variables) in the
     UiPath docs for additional insights.
@@ -12,9 +13,10 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: Now, let's take our creations further by setting up some variables.
-          - text: If data cells were bees, variables would be the jars in which we store the
-              honey.
+          - text: Managing data is crucial — just imagine a library without a catalog. Same chaos, different setting.
+          - text: Here's where the magic happens. Time to crack open the Data Manager and
+              take our creations to the next level by setting up some variables.
+          - text: ":instruction[Click on the right sidebar and click on Data Manager]"
           - text: "We'll create a new variable by :instruction[clicking the New+ button] and choosing variable and type text."
           - text: Name your new variable `theincrediblevariable`
     - actionId: ready_message
