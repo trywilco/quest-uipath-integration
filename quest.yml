@@ -6,6 +6,7 @@ description: In this quest, you'll learn to manage data in your UiPath Studio
   utilizing variables and gain insights into organizing your project’s data for
   efficient automation. By the end, you'll be equipped to skillfully handle data
   within your UiPath projects.
+
 skills:
   - frontend
   - backend
