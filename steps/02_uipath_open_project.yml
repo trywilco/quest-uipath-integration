@@ -30,8 +30,9 @@ trigger:
       params:
         url: "https://cloud.uipath.com/${user.integrations.uipath.userOrg}/${user.integrations.uipath.tenantName}/orchestrator_/odata/AuditLogs"
         method: GET
-        data: 
-          Authorization: 'Bearer ${user.integrations.uipath.accessToken}'
+        headers:
+          Authorization: "Bearer ${user.integrations.uipath.accessToken}"
+          "Content-Type": "application/json"
     if:
       conditions:
         - conditionId: text_contains_strings
