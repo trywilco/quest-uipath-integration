@@ -65,7 +65,49 @@ trigger:
                   integration: uipath
                   key: tenantName
                   value: ${outputs.get_tenant.data[0].name}
-              - actionId: finish_step
+              - actionId: user_set_integration_property
+                params:
+                  integration: uipath
+                  key: userOrg
+                  value: ${outputs.get_user_org.data[0].name}
+              - actionId: network_http_request
+                name: set_webhook
+                params:
+                  url: "https://cloud.uipath.com/${outputs.get_user_org.data[0].name}/orchestrator_/odata/Webhooks"
+                  method: POST
+                  headers:
+                    Authorization: "Bearer ${user.integrations.uipath.accessToken}"
+                    "Content-Type": "application/json"
+                  body: 
+                    Name: "WilcoUiPathEvent"
+                    Url: "https://engine.wilco.gg/users/${user._id}/event?event=uipathevent"
+                    Enabled: true
+                    SubscribeToAllEvents: true
+                    AllowInsecureSsl: true
+                    Events: 
+            if:
+              conditions:
+                - conditionId: is_truthy
+                  params:
+                    value: ${outputs.set_webhook?.data?.name?}
+              then:
+                do:
+                  - actionId: user_set_integration_property
+                    params:
+                      integration: uipath
+                      key: webhook
+                      value: ${outputs.set_webhook.data.Url}
+                  - actionId: finish_step
+              else:
+                do:
+                  - actionId: bot_message
+                    params:
+                      person: lucca
+                      messages:
+                        - text: "Error while login to UIPath"
+
+
+
           else:
             do:
               - actionId: bot_message
