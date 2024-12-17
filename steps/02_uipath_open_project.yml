@@ -19,9 +19,6 @@ startFlow:
           - text: Lets click on `Automations` and click :instruction[Create a new Project] and choose manual automation
           - text: Once you create it, click :instruction[Publish] and name your new Automation Project `Wilco${user.repoName}`
           - text: I will see once you create and publish your project.
-    - actionId: ready_message
-      params:
-        person: lucca
 trigger:
   type: user_event
   params:
