@@ -80,7 +80,7 @@ trigger:
                     "Content-Type": "application/json"
                   data: 
                     Name: "WilcoUiPathEvent_${user.repoName}"
-                    Url: "https://engine.wilco.gg/users/${user._id}/event?event=uipathevent"
+                    Url: "https://engine.wilco.gg/users/${user.id}/event?event=uipathevent"
                     Enabled: true
                     SubscribeToAllEvents: true
                     AllowInsecureSsl: true
