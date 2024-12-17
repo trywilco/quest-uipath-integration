@@ -21,4 +21,4 @@ trigger:
         params:
           person: lucca
           messages:
-            - text: 
+            - text: "Shouldn't get here"
