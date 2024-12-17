@@ -21,3 +21,8 @@ level: intermediate
 type: PROMPT
 duration: 2
 repository: null
+sidebarTools:
+  - name: UiPath Studio
+    link: ${user.properties.uipathstudio}
+    visible: ${!!user.properties.uipathstudio}
+    icon: uipathicon.png

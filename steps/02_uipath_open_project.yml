@@ -14,7 +14,7 @@ startFlow:
           - text: Great, we're legit now! Let's open UiPath Studio and start a new project.
           - text: Opening a project is like opening a new adventure — one where robots do our
               chores!
-          - text: Go ahead and launch UiPath Studio, and start a new project. You'll feel as
+          - text: Go ahead and [launch UiPath Studio](https://cloud.uipath.com/${user.integrations.uipath.userOrg}/studio_), and start a new project. You'll feel as
               if you're Donald Duck diving into a pool of automation goodness.
           - text: Lets click on `Automations` and click :instruction[Create a new Project] and choose manual automation
           - text: Once you create it, click :instruction[Publish] and name your new Automation Project `Wilco${user.repoName}`

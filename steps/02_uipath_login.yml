@@ -73,7 +73,7 @@ trigger:
               - actionId: network_http_request
                 name: set_webhook
                 params:
-                  url: "https://cloud.uipath.com/${outputs.get_user_org.data[0].name}/orchestrator_/odata/Webhooks"
+                  url: "https://cloud.uipath.com/${user.integrations.uipath.userOrg}/${user.integrations.uipath.tenantName}/orchestrator_/odata/Webhooks"
                   method: POST
                   headers:
                     Authorization: "Bearer ${user.integrations.uipath.accessToken}"
@@ -97,6 +97,12 @@ trigger:
                       integration: uipath
                       key: webhook
                       value: ${outputs.set_webhook.data.Url}
+                  
+                  - actionId: store_user_property
+                    params:
+                      name: uipathstudio
+                      value: "https://cloud.uipath.com/${user.integrations.uipath.userOrg}/studio_"
+
                   - actionId: finish_step
               else:
                 do:
