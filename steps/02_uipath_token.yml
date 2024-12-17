@@ -1,0 +1,82 @@
+id: uipath_login
+learningObjectives:
+  - test
+hints:
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: luca
+        messages:
+          - text: Login to UIPath"
+          - components:
+              - type: uipath_connect
+trigger:
+  type: user_event
+  params:
+    event: uipath_user_connected
+  flowNode:
+    do:
+      - actionId: network_http_request
+        name: get_user_org
+        params:
+          url: "https://cloud.uipath.com/identity_/api/UserOrgs/userOrgsLocalByAuth0Token"
+          method: GET
+          headers:
+            Authorization: "Bearer ${user.integrations.uipath.accessToken}"
+            "Content-Type": "application/json"
+          params:
+            includeNonAcceptedInvites: false
+
+    if:
+      conditions:
+        - conditionId: is_truthy
+          params:
+            value: ${outputs.get_user_org?.data?.[0]?.name}
+      then:
+        do:
+          - actionId: user_set_integration_property
+            params:
+              integration: uipath
+              key: userOrg
+              value: ${outputs.get_user_org.data[0].name}
+          - actionId: network_http_request
+            name: get_tenant
+            params:
+              url: "https://cloud.uipath.com/${outputs.get_user_org.data[0].name}/portal_/api/organization/tenant"
+              method: GET
+              headers:
+                Authorization: "Bearer ${user.integrations.uipath.accessToken}"
+                "Content-Type": "application/json"
+              params:
+                organizationGuid: ${outputs.get_user_org.data[0].globalId}
+                accountName: ${outputs.get_user_org.data[0].name}
+                includeTenantServices: true
+
+        if:
+          conditions:
+            - conditionId: is_truthy
+              params:
+                value: ${outputs.get_tenant?.data?.[0]?.name}
+          then:
+            do:
+              - actionId: user_set_integration_property
+                params:
+                  integration: uipath
+                  key: tenantName
+                  value: ${outputs.get_tenant.data[0].name}
+              - actionId: finish_step
+          else:
+            do:
+              - actionId: bot_message
+                params:
+                  person: keen
+                  messages:
+                    - text: "Error while login to UIPath"
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: keen
+              messages:
+                - text: "Error while login to UIPath"
