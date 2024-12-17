@@ -37,7 +37,7 @@ trigger:
       conditions:
         - conditionId: text_contains_strings
           params:
-            text: "${outputs.audit_logs.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco${user.repoName}')}"
+            text: "${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco${user.repoName}')}"
             strings:
             - Wilco${user.repoName}
       then:
