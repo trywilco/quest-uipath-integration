@@ -39,7 +39,7 @@ trigger:
           params:
             text: "${outputs.audit_logs.data.value}"
             strings:
-            - "Component\":\"Packages\",\"DisplayName\":\"Wilco${user.repoName}\""
+            - "\"Component\":\"Packages\",\"DisplayName\":\"Wilco${user.repoName}\""
       then:
         do:
         - actionId: bot_message
@@ -54,7 +54,6 @@ trigger:
           params:
             person: lucca
             messages:
-            - text: "lets make sure {user.repoName}"
             - text: "this is testing ${JSON.stringify(outputs.audit_logs.data.value)}"
             - text: "Seems we're not quite there yet. Please recheck the project name to make sure its exactly like I wrote above."
 
