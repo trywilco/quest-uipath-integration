@@ -25,14 +25,14 @@ trigger:
     event: uipath
   flowNode:
     do:
-     - actionId: network_http_request
-        name: robot_logs
-        params:
-          url: "https://cloud.uipath.com/${user.properties.uipath_orgName}/${user.properties.uipath_tenantName}/orchestrator_/odata/RobotLogs"
-          method: GET
-          data: 
-            X-UIPATH-OrganizationUnitId: ${user.properties.uipath_orgnId}
-            Authorization: 'Bearer ${user.properties.uipath_accessToken}'
+    - actionId: network_http_request
+      name: robot_logs
+      params:
+        url: "https://cloud.uipath.com/${user.properties.uipath_orgName}/${user.properties.uipath_tenantName}/orchestrator_/odata/RobotLogs"
+        method: GET
+        data: 
+          X-UIPATH-OrganizationUnitId: ${user.properties.uipath_orgnId}
+          Authorization: 'Bearer ${user.properties.uipath_accessToken}'
     if:
       conditions:
         - conditionId: text_contains_strings
