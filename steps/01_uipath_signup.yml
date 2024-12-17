@@ -17,3 +17,8 @@ trigger:
   type: user_ready_response
   flowNode:
     do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: 
