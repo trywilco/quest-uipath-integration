@@ -54,6 +54,6 @@ trigger:
             person: lucca
             messages:
             - text: "lets make sure {user.repoName}"
-            - text: "this is testing ${outputs.audit_logs}"
+            - text: "this is testing ${JSON.stringify(outputs.audit_logs)}"
             - text: "Seems we're not quite there yet. Please recheck the project name to make sure its exactly like I wrote above."
 
