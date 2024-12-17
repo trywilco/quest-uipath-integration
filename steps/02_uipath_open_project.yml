@@ -28,13 +28,13 @@ trigger:
     event: uipathevent
   flowNode:
     do:
-     - actionId: network_http_request
-        name: audit_logs
-        params:
-          url: "https://cloud.uipath.com/${user.integrations.uipath.userOrg}/${user.integrations.uipath.tenantName}/orchestrator_/odata/AuditLogs"
-          method: GET
-          data: 
-            Authorization: 'Bearer ${user.properties.accessToken}'
+    - actionId: network_http_request
+      name: audit_logs
+      params:
+        url: "https://cloud.uipath.com/${user.integrations.uipath.userOrg}/${user.integrations.uipath.tenantName}/orchestrator_/odata/AuditLogs"
+        method: GET
+        data: 
+          Authorization: 'Bearer ${user.properties.accessToken}'
     if:
       conditions:
         - conditionId: text_contains_strings
