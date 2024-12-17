@@ -70,13 +70,13 @@ trigger:
             do:
               - actionId: bot_message
                 params:
-                  person: keen
+                  person: luca
                   messages:
                     - text: "Error while login to UIPath"
       else:
         do:
           - actionId: bot_message
             params:
-              person: keen
+              person: luca
               messages:
                 - text: "Error while login to UIPath"
