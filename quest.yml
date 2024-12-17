@@ -16,7 +16,6 @@ steps:
   - uipath_login
   - uipath_open_project
   - uipath_variable_creation
-  - uipath_setvariable_value
   - uipath_log_data
 level: intermediate
 type: PROMPT

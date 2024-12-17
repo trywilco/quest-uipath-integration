@@ -39,7 +39,7 @@ trigger:
       conditions:
         - conditionId: text_contains_strings
           params:
-            text: "${outputs.audit_logs.value.find(item => item.MethodName === "UploadPackage" && item.DisplayName === "Wilco${user.repoName}");}"
+            text: "${outputs.audit_logs.value.find(item => item.MethodName === "UploadPackage" && item.DisplayName === "Wilco${user.repoName}")}"
             strings:
             - Wilco${user.repoName}
       then:
@@ -56,8 +56,5 @@ trigger:
           params:
             person: lucca
             messages:
-            - text: "Seems we're not quite there yet. Please recheck the project name to make sure its exactly like I wrote."
-        - actionId: ready_message
-          params:
-            person: lucca
+            - text: "Seems we're not quite there yet. Please recheck the project name to make sure its exactly like I wrote above."
 

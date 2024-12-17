@@ -6,7 +6,7 @@ hints:
   - Check [Variable
     Creation](https://docs.uipath.com/studio/docs/managing-variables) in the
     UiPath docs for additional insights.
-  - Always assign meaningful names to variables so Ness knows you’re organized!
+  - Always assign meaningful names to variables so Ness knows you're organized!
 startFlow:
   do:
     - actionId: bot_message
@@ -19,6 +19,9 @@ startFlow:
           - text: ":instruction[Click on the right sidebar and click on Data Manager]"
           - text: "We'll create a new variable by :instruction[clicking the New+ button] and choosing variable and type text."
           - text: Name your new variable `theincrediblevariable`
+          - text: We also want to set some content for it. Click on the [+] sign in your automation screen and :instruction[click on `Set Variable Value`]
+          - text: Write inside `Lets do this Wilco!`
+          - text: Let me know when you are done.
     - actionId: ready_message
       params:
         person: lucca
@@ -30,5 +33,5 @@ trigger:
         params:
           person: lucca
           messages:
-            - text: Now lets fill in some data and test it!
+            - text: Great, now let's print something so we can test it all worked.
       - actionId: finish_step

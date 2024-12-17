@@ -1,4 +1,4 @@
-id: uipath_setvariable_value
+id: uipath_printvariabletoconsole
 learningObjectives:
   - Create a flow to fill data into your variable
 startFlow:
