@@ -11,17 +11,53 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: Great, we’re legit now! Let's open UiPath Studio and start a new project.
+          - text: Great, we're legit now! Let's open UiPath Studio and start a new project.
           - text: Opening a project is like opening a new adventure — one where robots do our
               chores!
-          - text: Go ahead and launch UiPath Studio, and start a new project. You’ll feel as
-              if you’re Donald Duck diving into a pool of automation goodness.
+          - text: Go ahead and launch UiPath Studio, and start a new project. You'll feel as
+              if you're Donald Duck diving into a pool of automation goodness.
           - text: Lets click on `Automations` and click :instruction[Create a new Project] and choose manual automation
+          - text: Once you create it, click :instruction[Publish] and name your new Automation Project `Wilco${user.repoName}`
+          - text: I will see once you create and publish your project.
     - actionId: ready_message
       params:
         person: lucca
 trigger:
-  type: user_ready_response
+  type: user_event
+  params:
+    event: uipathevent
   flowNode:
     do:
-      - actionId: finish_step
+     - actionId: network_http_request
+        name: audit_logs
+        params:
+          url: "https://cloud.uipath.com/${user.integrations.uipath.userOrg}/${user.integrations.uipath.tenantName}/orchestrator_/odata/AuditLogs"
+          method: GET
+          data: 
+            Authorization: 'Bearer ${user.properties.accessToken}'
+    if:
+      conditions:
+        - conditionId: text_contains_strings
+          params:
+            text: "${outputs.audit_logs.value.find(item => item.MethodName === "UploadPackage" && item.DisplayName === "Wilco${user.repoName}");}"
+            strings:
+            - Wilco${user.repoName}
+      then:
+        do:
+        - actionId: bot_message
+          params:
+            person: lucca
+            messages:
+            - text: "![](https://i.giphy.com/media/2CiAsp6yAdiPKx1aM0/giphy.gif)<br/>Fantastic work! Looks like we created our first project!"
+        - actionId: finish_step
+      else:
+        do:
+        - actionId: bot_message
+          params:
+            person: lucca
+            messages:
+            - text: "Seems we're not quite there yet. Please recheck the project name to make sure its exactly like I wrote."
+        - actionId: ready_message
+          params:
+            person: lucca
+

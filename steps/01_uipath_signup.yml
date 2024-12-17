@@ -11,16 +11,6 @@ startFlow:
         person: lucca
         messages:
           - text: Hey there, it's Lucca! Ready for your automated debut?
-          - text: First things first, we need to get you signed up on UiPath. It’s like
-              getting a library card—except this library helps us automate the
-              world.
-          - text: Head over to [UiPath's sign-up page](https://www.uipath.com) and create an
-              account if you haven't yet. Trust me, Ness will thank you later.
-    - actionId: ready_message
-      params:
-        person: lucca
+          - text: First things first, we need to get you signed up and signed in at UiPath. UiPath Is like getting a library card—except this library helps us automate the world.
+    - actionId: finish_step
 trigger:
-  type: user_ready_response
-  flowNode:
-    do:
-      - actionId: finish_step
