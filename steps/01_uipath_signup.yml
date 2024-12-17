@@ -16,3 +16,4 @@ startFlow:
 trigger:
   type: user_ready_response
   flowNode:
+    do:
