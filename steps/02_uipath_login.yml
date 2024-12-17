@@ -6,7 +6,7 @@ startFlow:
   do:
     - actionId: bot_message
       params:
-        person: luca
+        person: lucca
         messages:
           - text: Login to UIPath"
           - components:
@@ -70,13 +70,13 @@ trigger:
             do:
               - actionId: bot_message
                 params:
-                  person: luca
+                  person: lucca
                   messages:
                     - text: "Error while login to UIPath"
       else:
         do:
           - actionId: bot_message
             params:
-              person: luca
+              person: lucca
               messages:
                 - text: "Error while login to UIPath"
