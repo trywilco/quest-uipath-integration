@@ -15,20 +15,47 @@ startFlow:
         person: lucca
         messages: 
           - text: Now its time to test your work :instruction[Click test from top left corner] and see it in action. 
-          - text: If all goes well it will show you the automation progress and the robot name on the right log panel.
+          - text: We're going to validate it for you, all you need todo is :instruction[click `Test on cloud`], once we check it you'll be able to continue.
     - actionId: ready_message
       params:
         person: lucca
 trigger:
-  type: user_ready_response
+  type: user_event
+  params:
+    event: uipath
   flowNode:
     do:
-      - actionId: bot_message
+     - actionId: network_http_request
+        name: create_token
         params:
-          person: lucca
-          messages:
-            - text: Fantastic work! You've dived into the world of automation with UiPath and
-                mastered the essentials of data management. With your newfound
-                skills, you're ready to tackle even bigger projects and impress
-                Ness with your automation prowess. Go automate the world!
-      - actionId: finish_step
+          url: "https://cloud.uipath.com/${user.properties.uipath_orgName}/${user.properties.uipath_tenantName}/orchestrator_/odata/RobotLogs"
+          method: GET
+          data: 
+            X-UIPATH-OrganizationUnitId: ${user.properties.uipath_orgnId}
+            Authorization: 'Bearer ${user.properties.uipath_accessToken}'
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: ${outputs.value.find(item => item.Message === "I am alon@wilcohq.com-attended");}
+            regex: ^sam@microsoft.com$
+            flags: i
+
+      then:
+        do:
+        - actionId: bot_message
+          params:
+            person: lucca
+            messages:
+            - text: "![](https://i.giphy.com/media/2CiAsp6yAdiPKx1aM0/giphy.gif)<br/>Fantastic work! Sam's email is now updated, marking a successful end to our quest. Your quick adaptation and precision have been key to keeping our records spot-on.<br/> Thanks for riding through this journey with us!"
+        - actionId: finish_step
+      else:
+        do:
+        - actionId: bot_message
+          params:
+            person: lucca
+            messages:
+            - text: "Seems we're not quite there yet. Please recheck Sam's email update in the CMS."
+        - actionId: ready_message
+          params:
+            person: lucca
