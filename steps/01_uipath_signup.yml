@@ -14,3 +14,4 @@ startFlow:
           - text: First things first, we need to get you signed up and signed in at UiPath. UiPath Is like getting a library card—except this library helps us automate the world.
     - actionId: finish_step
 trigger:
+  type: user_ready_response
