@@ -53,6 +53,6 @@ trigger:
           params:
             person: lucca
             messages:
-            - text: "JSON.stringify(${outputs.audit_logs)"
+            - text: ${outputs.audit_logs
             - text: "Seems we're not quite there yet. Please recheck the project name to make sure its exactly like I wrote above."
 
