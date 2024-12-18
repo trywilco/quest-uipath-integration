@@ -37,9 +37,9 @@ trigger:
       conditions:
         - conditionId: text_contains_strings
           params:
-            text: "${outputs.audit_logs.data.value}"
+            text: "recieved"
             strings:
-            - "\"Component\":\"Packages\",\"DisplayName\":\"Wilco${user.repoName}\""
+            - recieved
       then:
         do:
         - actionId: bot_message
