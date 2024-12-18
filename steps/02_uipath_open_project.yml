@@ -37,17 +37,16 @@ trigger:
       conditions:
         - conditionId: text_contains_strings
           params:
-            text: "recieved"
+            text: "${outputs.audit_logs.data.value}"
             strings:
-            - recieved
+            - "Wilco${user.repoName}"
       then:
         do:
         - actionId: bot_message
           params:
             person: lucca
             messages:
-            - text: "${JSON.stringify(outputs.audit_logs.data.value)}"
-            - text: "![](https://i.giphy.com/media/2CiAsp6yAdiPKx1aM0/giphy.gif)<br/>Fantastic work! Looks like we created our first project!"
+            - text: "![](https://i.giphy.com/media/2CiAsp6yAdiPKx1aM0/giphy.gif)Fantastic work! Looks like we created our first project!"
         - actionId: finish_step
       else:
         do:
