@@ -22,7 +22,6 @@ trigger:
       - actionId: parse_user_response
         name: user_answer
         params:
-          prompt: " If the user answered with that message return 'correct: true' if not return 'correct: false'"
           prompt: "
 
             \  Please evaluate the user's answer in relation to the
