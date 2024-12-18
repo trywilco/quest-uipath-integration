@@ -37,9 +37,7 @@ trigger:
       conditions:
         - conditionId: is_truthy
           params:
-            text: "${outputs.audit_logs.data.value.find(item => item.DisplayName === 'Wilco${user.repoName}')?.length}"
-            strings:
-            - "Wilco${user.repoName}"
+            value: "${outputs.audit_logs.data.value.find(item => item.DisplayName === 'Wilco${user.repoName}')?.length}"
       then:
         do:
         - actionId: bot_message
