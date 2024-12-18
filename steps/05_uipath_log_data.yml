@@ -37,7 +37,7 @@ trigger:
       conditions:
         - conditionId: is_truthy
           params:
-            value: "${outputs.robot_logs.value.find(item => item.Message === 'Lets do this Wilco!')?.length > 0}"
+            value: "${outputs.robot_logs.data.value.find(item => item.Message === 'Lets do this Wilco!')?.length > 0}"
       then:
         do:
         - actionId: bot_message

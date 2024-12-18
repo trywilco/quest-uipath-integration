@@ -33,11 +33,16 @@ trigger:
         headers:
           Authorization: "Bearer ${user.integrations.uipath.accessToken}"
           "Content-Type": "application/json"
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "${JSON.stringify(outputs.audit_logs.data)}"
     if:
       conditions:
         - conditionId: is_truthy
           params:
-            value: "${outputs.audit_logs.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco1' + user.repoName)?.length > 0}"
+            value: "${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco1' + user.repoName)?.length > 0}"
       then:
         do:
         - actionId: bot_message
