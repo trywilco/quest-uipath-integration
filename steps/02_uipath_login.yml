@@ -97,13 +97,33 @@ trigger:
                       integration: uipath
                       key: webhook
                       value: ${outputs.set_webhook.data.Url}
-                  
                   - actionId: store_user_property
                     params:
                       name: uipathstudio
                       value: "https://cloud.uipath.com/${user.integrations.uipath.userOrg}/studio_"
 
-                  - actionId: finish_step
+                  - actionId: network_http_request
+                    name: set_folders
+                    params:
+                      url: "https://cloud.uipath.com/${user.integrations.uipath.userOrg}/${user.integrations.uipath.tenantName}/orchestrator_/api/Folders/GetAllForCurrentUser"
+                      method: GET
+                      headers:
+                        Authorization: "Bearer ${user.integrations.uipath.accessToken}"
+                        "Content-Type": "application/json"
+                if:
+                  conditions:
+                    - conditionId: is_truthy
+                      params:
+                        value: ${outputs.set_folders?.data?.PageItems[0].Id?}
+                  then:
+                    do:
+                      - actionId: user_set_integration_property
+                        params:
+                          integration: uipath
+                          key: OrganizationUnitId
+                          value: ${outputs.set_folders.data.PageItems[0].Id}
+                      - actionId: finish_step
+                  
               else:
                 do:
                   - actionId: bot_message

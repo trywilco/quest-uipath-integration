@@ -31,8 +31,8 @@ trigger:
         url: "https://cloud.uipath.com/${user.properties.uipath_orgName}/${user.properties.uipath_tenantName}/orchestrator_/odata/RobotLogs"
         method: GET
         data: 
-          X-UIPATH-OrganizationUnitId: ${user.properties.uipath_orgnId}
-          Authorization: 'Bearer ${user.properties.uipath_accessToken}'
+          X-UIPATH-OrganizationUnitId: ${user.integrations.uipath.OrganizationUnitId}
+          Authorization: "Bearer ${user.integrations.uipath.accessToken}"
     if:
       conditions:
         - conditionId: is_truthy
