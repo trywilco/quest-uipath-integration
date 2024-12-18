@@ -3,14 +3,23 @@ learningObjectives:
   - test
 hints:
 startFlow:
-  do:
-    - actionId: bot_message
-      params:
-        person: lucca
-        messages:
-          - text: Login to UIPath"
-          - components:
-              - type: uipath_connect
+  if:
+    conditions:
+      - conditionId: is_truthy
+        params:
+          value: ${user.integrations?.uipath?.accessToken}
+    then:
+      do:
+      - actionId: finish_step
+    else:
+      do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: Login to UIPath
+            - components:
+                - type: uipath_connect
 trigger:
   type: user_event
   params:
@@ -80,7 +89,7 @@ trigger:
                     "Content-Type": "application/json"
                   data: 
                     Name: "WilcoUiPathEvent_${user.repoName}"
-                    Url: "https://engine.wilco.gg/users/61e5313745f72d21a5171c10/event?event=uipathevent"
+                    Url: "https://engine.wilco.gg/users/${user.id}/event?event=uipathevent"
                     Enabled: true
                     SubscribeToAllEvents: true
                     AllowInsecureSsl: true
