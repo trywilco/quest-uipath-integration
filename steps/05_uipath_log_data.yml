@@ -35,11 +35,9 @@ trigger:
           Authorization: 'Bearer ${user.properties.uipath_accessToken}'
     if:
       conditions:
-        - conditionId: text_contains_strings
+        - conditionId: is_truthy
           params:
-            text: ${outputs.robot_logs.value.find(item => item.Message === "Lets do this Wilco!");}
-            strings:
-            - "Lets do this Wilco!"
+            value: "${outputs.robot_logs.value.find(item => item.Message === 'Lets do this Wilco!')?.length > 0}"
       then:
         do:
         - actionId: bot_message
@@ -47,7 +45,6 @@ trigger:
             person: lucca
             messages:
             - text: "Lets do this! You managed to set everything up, print to console. Time to move to some advance things now."
-        - actionId: finish_step
       else:
         do:
         - actionId: bot_message
