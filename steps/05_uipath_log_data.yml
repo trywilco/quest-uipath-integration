@@ -22,7 +22,7 @@ startFlow:
 trigger:
   type: user_event
   params:
-    event: uipath
+    event: uipathevent
   flowNode:
     do:
     - actionId: network_http_request
