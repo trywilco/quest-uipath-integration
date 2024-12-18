@@ -33,12 +33,6 @@ trigger:
         headers:
           Authorization: "Bearer ${user.integrations.uipath.accessToken}"
           "Content-Type": "application/json"
-
-    - actionId: bot_message
-      params:
-        person: lucca
-        messages:
-        - text: "data: ${outputs.audit_logs.data}"
     if:
       conditions:
         - conditionId: is_truthy
@@ -54,9 +48,4 @@ trigger:
         - actionId: finish_step
       else:
         do:
-        - actionId: bot_message
-          params:
-            person: lucca
-            messages:
-            - text: "Seems we're not quite there yet. Please recheck the project name to make sure its exactly like I wrote above."
 
