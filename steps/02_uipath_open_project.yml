@@ -46,6 +46,7 @@ trigger:
           params:
             person: lucca
             messages:
+            - text: ${JSON.stringify(outputs.audit_logs.data.value)}
             - text: "![](https://i.giphy.com/media/2CiAsp6yAdiPKx1aM0/giphy.gif)<br/>Fantastic work! Looks like we created our first project!"
         - actionId: finish_step
       else:
