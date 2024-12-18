@@ -1,0 +1,95 @@
+id: uipath_setuphttprequest
+learningObjectives:
+  - Create a flow to fill data into your variable
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Ok so we validated that your seeing input in your console when running it. Let's make this interesting by pulling some external data.
+          - text: Click the [+] sign and search for an action called `Web API` and choose HTTP Request.
+          - text: Fill in the request URL with `https://www.trywilco.com/enjoylife`.
+          - text: Add another log message using the [+] right after the HTTP Request, choose from the HTTP request the `Response Content`.
+          - text: :instruction[Click on Test in cloud] to see what happens.
+          - text: Tell me what comes up in the console, something about enjoying life... copy paste it here so we can both enjoy it.
+trigger:
+  type: user_message
+  params:
+    person: lucca
+  flowNode:
+    do:
+      - actionId: parse_user_response
+        name: user_answer
+        params:
+          prompt: " If the user answered with that message return 'correct: true' if not return 'correct: false'"
+          prompt: "
+
+            \  Please evaluate the user's answer in relation to the
+            expected answer: User is supposed to response with a short message of 
+            'One cannot fully enjoy life without understanding its sacred dimension.' or it 
+            might also be Mircea Eliade once said One cannot fully enjoy life without understanding its sacred dimension.
+
+            \  # Assessment Criteria
+
+            \  - Determine if the user's response resembles the 
+            expected answer of One cannot fully enjoy life without understanding its sacred dimension.
+
+            \  - Consider synonyms, paraphrasing, and different
+            phrasing that convey the same meaning.
+
+            \  - Be flexible and focus on the essence of the answer
+            rather than exact wording.
+
+
+            \  # Response Guidelines:
+
+            \  - If the user's answer is correct or shows sufficient
+            understanding, return 'correct: true'.
+
+            \    - Provide a positive and affirming message,
+            congratulating them and reinforcing their understanding.
+
+            \  - If the user's answer is incorrect or incomplete,
+            return 'correct: false'.
+
+            \    - Gently explain why the answer is not fully
+            correct or what may be missing.
+
+            \    - Encourage them to try again, being empathetic and
+            supportive.
+
+
+            \  # Tone and Style:
+
+            \  - Use friendly and encouraging language.
+
+            \  - Be empathetic to the user's learning process.
+
+            \  - Focus on helping the user learn and understand the
+            material.
+
+            \            "          
+          schema:
+            correct: boolean
+            reply: string
+    if:
+      conditions:
+        - conditionId: is_truthy
+          params:
+            value: ${outputs.user_answer.value.correct}
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.user_answer.value.reply} Amazing work, we are done here! I hope you enjoyed working with UiPath and Wilco.
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.user_answer.value.reply}

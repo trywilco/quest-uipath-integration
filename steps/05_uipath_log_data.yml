@@ -37,7 +37,7 @@ trigger:
       conditions:
         - conditionId: is_truthy
           params:
-            value: "${outputs.robot_logs.data.value.find(item => item.Message === 'Lets do this Wilco!')?.length > 0}"
+            value: "${outputs.robot_logs.data.value.find(item => item.Message === 'Mircea Eliade once said')?.length > 0}"
       then:
         do:
         - actionId: bot_message
@@ -45,10 +45,3 @@ trigger:
             person: lucca
             messages:
             - text: "Lets do this! You managed to set everything up, print to console. Time to move to some advance things now."
-      else:
-        do:
-        - actionId: bot_message
-          params:
-            person: lucca
-            messages:
-            - text: "Seems we're not quite there yet. Please recheck that you set the variable to `Lets do this Wilco!`"

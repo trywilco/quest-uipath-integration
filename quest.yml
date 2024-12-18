@@ -17,6 +17,7 @@ steps:
   - uipath_open_project
   - uipath_variable_creation
   - uipath_log_data
+  - uipath_setuphttprequest
 level: intermediate
 type: PROMPT
 duration: 2

@@ -20,7 +20,7 @@ startFlow:
           - text: "We'll create a new variable by :instruction[clicking the New+ button] and choosing variable and type text."
           - text: Name your new variable `theincrediblevariable`
           - text: We also want to set some content for it. Click on the [+] sign in your automation screen and :instruction[click on `Set Variable Value`]
-          - text: Write inside `Lets do this Wilco!`
+          - text: Write inside `Mircea Eliade once said`
           - text: Let me know when you are done.
     - actionId: ready_message
       params:
