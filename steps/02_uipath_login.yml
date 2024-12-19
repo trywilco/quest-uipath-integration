@@ -1,6 +1,6 @@
 id: uipath_login
 learningObjectives:
-  - test
+  - Login to UiPath
 hints:
 startFlow:
   do:
