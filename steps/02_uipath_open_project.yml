@@ -37,7 +37,12 @@ trigger:
       params:
         person: lucca
         messages:
-          - text: "Data: ${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco' + user.repoName)?.length)}"
+          - text: "1: ${outputs.audit_logs}"
+          - text: "2: ${outputs.audit_logs.data}"
+          - text: "3: ${outputs.audit_logs.data.value}"
+          - text: "4: ${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage'))}"
+          - text: "5: ${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco' + user.repoName))}"
+          - text: "6: ${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco' + user.repoName)?.length)}"
     if:
       conditions:
         - conditionId: is_truthy
