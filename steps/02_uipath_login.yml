@@ -79,7 +79,7 @@ trigger:
                     Authorization: "Bearer ${user.integrations.uipath.accessToken}"
                     "Content-Type": "application/json"
                   data: 
-                    Name: "WilcoUiPathEvent_${user.repoName}"
+                    Name: "WilcoUiPathEvent_${user.id}"
                     Url: "https://engine.wilco.gg/users/${user.id}/event?event=uipathevent"
                     Enabled: true
                     SubscribeToAllEvents: true

@@ -17,7 +17,7 @@ startFlow:
           - text: Go ahead and [launch UiPath Studio](https://cloud.uipath.com/${user.integrations.uipath.userOrg}/studio_), and start a new project. You'll feel as
               if you're Donald Duck diving into a pool of automation goodness.
           - text: Lets click on `Automations` and click :instruction[Create a new Project] and choose manual automation
-          - text: Once you create it, click :instruction[Publish] and name your new Automation Project `Wilco${user.repoName}`
+          - text: Once you create it, click :instruction[Publish] and name your new Automation Project `Wilco${user.id}`
           - text: I will see once you create and publish your project.
 trigger:
   type: user_event
@@ -41,12 +41,12 @@ trigger:
     #      - text: "2: ${outputs.audit_logs.data}"
     #      - text: "3: ${outputs.audit_logs.data.value}"
     #      - text: "4: ${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage')}"
-    #      - text: "5: ${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco' + user.repoName)}"
+    #      - text: "5: ${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco' + user.id)}"
     if:
       conditions:
         - conditionId: is_truthy
           params:
-            value: "${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco' + user.repoName)}"
+            value: "${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco' + user.id)}"
       then:
         do:
         - actionId: bot_message
