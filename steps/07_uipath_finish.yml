@@ -1,0 +1,19 @@
+id: uipath_finish
+learningObjectives:
+  - See the results and enjoy life
+hints:
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: This is the finish line! Congrats on finishing this UiPath quest!
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: finish_step

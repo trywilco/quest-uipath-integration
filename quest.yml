@@ -18,6 +18,7 @@ steps:
   - uipath_variable_creation
   - uipath_log_data
   - uipath_setuphttprequest
+  - uipath_finish
 level: intermediate
 type: PROMPT
 duration: 2
