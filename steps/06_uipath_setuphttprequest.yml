@@ -10,7 +10,7 @@ startFlow:
           - text: Ok so we validated that your seeing input in your console when running it. Let's make this interesting by pulling some external data.
           - text: Click the [+] sign and search for an action called `Web API` and choose HTTP Request.
           - text: Fill in the request URL with `https://www.trywilco.com/finishline`.
-          - text: Add another log message using the [+] right after the HTTP Request, choose from the HTTP request the `Response Content`.
+          - text: Add another `log message using the [+]` right after the HTTP Request, choose from the HTTP request the `Response Content`.
           - text: :instruction[Click on Test in cloud] to see what happens.
           - text: Tell me what comes up in the console, something about enjoying life... copy paste it here so we can both enjoy it.
 trigger:
