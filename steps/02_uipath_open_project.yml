@@ -37,7 +37,7 @@ trigger:
       params:
         person: lucca
         messages:
-          - text: "${JSON.stringify(outputs.audit_logs.data)}"
+          - text: "Data: ${outputs.audit_logs.data.value.find(item => item.MethodName === 'UploadPackage' && item.DisplayName === 'Wilco' + user.repoName)?.length)}"
     if:
       conditions:
         - conditionId: is_truthy
