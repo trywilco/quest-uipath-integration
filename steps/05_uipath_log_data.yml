@@ -16,9 +16,6 @@ startFlow:
         messages: 
           - text: Now its time to test your work :instruction[Click `Test on cloud` from top left corner] and see it in action.
           - text: I'm going to check how you did, once I validate it you'll be able to continue.
-    - actionId: ready_message
-      params:
-        person: lucca
 trigger:
   type: user_event
   params:
