@@ -9,7 +9,7 @@ startFlow:
         messages:
           - text: We want to see some feedback from our flow, we'll use a new action called `Log Message`
           - text: We'll :instruction[Click on the [+] Plus sign] and search for `Log Message`
-          - text: In the message input field choose your new variable `theincrediblevar` and log level as `Info`
+          - text: In the message input field choose your new variable `theincrediblevariable` and log level as `Info`
     - actionId: bot_message
       params:
         person: lucca
@@ -42,3 +42,4 @@ trigger:
             person: lucca
             messages:
             - text: "Lets do this! You managed to set everything up, print to console. Time to move to some advance things now."
+        - actionId: finish_step
